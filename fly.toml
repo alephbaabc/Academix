@@ -1,4 +1,4 @@
-app = "my-academix-mcp"
+app = "abdaca"
 primary_region = "iad"
 
 [build]
