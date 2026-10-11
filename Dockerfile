@@ -2,6 +2,9 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
+# Suppress the root user warning from pip
+ENV PIP_ROOT_USER_ACTION=ignore
+
 # Install the uv package manager
 RUN pip install --no-cache-dir uv
 
