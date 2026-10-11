@@ -2,17 +2,17 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install uv package manager
+# Install the uv package manager
 RUN pip install --no-cache-dir uv
 
-# Copy project files
+# Copy repository files
 COPY . .
 
 # Install dependencies
-RUN uv sync --frozen || uv sync
+RUN uv sync
 
-# Expose web port for Fly.io
-EXPOSE 8080
+# Expose Render's standard web port
+EXPOSE 10000
 
-# Run the MCP server
-CMD ["uv", "run", "academix"]
+# Start Academix in SSE transport mode on port 10000
+CMD ["uv", "run", "academix", "--transport", "sse", "--port", "10000"]
